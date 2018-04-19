@@ -15,6 +15,11 @@ module Spring
         "crystalball"
       end
 
+      def call
+        ::RSpec.configuration.start_time = Time.now if defined?(::RSpec.configuration.start_time)
+        ::Crystalball::RSpec::Runner.invoke
+      end
+
       def setup
         ::Crystalball::RSpec::Runner.prepare
       end
